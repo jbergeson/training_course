@@ -6,199 +6,360 @@
 
 \begin{document}
 
-\textit{(Words in italics and parentheses are notes to the teacher.)} 
-\newline
-\textcolor{red}{Words in red are notes to the writer about things that need fixing or further explanation.}
+\centerline{\textbf{OpenMDAO Lesson Plan}} 
 
+\noindent \textit{\centerline{(Words in italics and parentheses are notes to the teacher.)}}
+\newline
+\textcolor{red}{\centerline{Words in red are notes to the writer about things that need fixing,} \newline \centerline{further explanation, or additional information.}}
+\newline \newline
+\textit{(Note: make all the slides downloadable and available to students. Also make the completed coding examples from the videos downloadable to students. Aiming for about 50 minutes per video. It is important to note that the students may or may not be taking notes while watching these videos, so all pertinent information needs to be included in either the downloadaable code files or the downloadable slides.} \textcolor{red}{This means some adjusting will need to be done.} \textit{Whenever code is shown, unless otherwise specified it is intended to be typed up and explained along the way.)} 
+
+%%%----------Video 1----------%%%
 \begin{itemize}
-	\item \underline{Video 1: Optimization}
+	\item \underline{Video 1: Optimization} \textit{This video is meant to get everyone up to speed on practical optimization issues, and doesn't have any actual coding in it, just slides.} \textcolor{red}{This video needs more fleshing out.}
 		\begin{itemize}
-			\item MDO: what it is, why it's useful
-			\item Failed cases: what they are, why they happen, how they're handled
-			\item Postprocessing optimized data
-			\item Choosing initial guesses for the optimizer and solver
-			\item Differences between gradient-free and gradient-based optimization
-			\item How/when to use equality constraints
+			\item MDO
+				\begin{itemize}
+					\item Explain what MDO is and why it is useful.
+					\item Explain what an objective is.
+					\item Explain what a constraint is.
+					\item Explain what a design variable is.
+				\end{itemize}
+			\item Failed cases: what they are, why they happen, how they're handled.
+			\item Postprocessing optimized data.
+			\item Choosing initial guesses for the optimizer and solver.
+			\item Differences between gradient-free and gradient-based optimization.
+			\item How/when to use equality constraints.
+			\item \textbf{Assignment: None.}
 		\end{itemize}
-	\item \underline{Video 2: Introduction to OpenMDAO}
+
+%%%----------Video 2----------%%%
+	\item \underline{Video 2: Introduction to OpenMDAO} \textit{This video is meant to provide a general introduction to what OpenMDAO is and does, and to start getting the student thinking about the modular and hierarchical structure of OpenMDAO. So again, no actual coding, just slides.} \textcolor{red}{There are pre-existing slides on much of this video's content.}
 		\begin{itemize}
-			\item -	Motivation behind using OpenMDAO
-			\item What OpenMDAO is useful for and can handle
-			\item How OpenMDAO thinks (hierarchical modularized models) (show lots of pretty pictures with lots of explanation to help them grasp the 			overall structure, this is very important.)
-			\item OpenMDAO has both solvers and drivers. Briefly explain what these do.
-			\item Why OpenMDAO needs derivatives
-			\item Installing OpenMDAO
-			\item General layout of an OpenMDAO file
+			\item Motivation behind using OpenMDAO.
+			\item What OpenMDAO is useful for and can handle.
+			\item How OpenMDAO thinks (hierarchical modularized models). Use examples. \textit{(Show lots of pretty pictures with lots of explanation to help them grasp the overall structure, this is very important.)}
+			\item OpenMDAO has both solvers and drivers. Briefly explain what these do. They will be covered in more detail later in the course.
+			\item Explain why OpenMDAO needs derivatives.
+			\item Show how to install OpenMDAO both ways, explain which is better in certain circumstances.
+			\item Show as sample file (like Sellar) and explain the general layout of an OpenMDAO file. (ie. component, group, problem. Not super detailed.)
+			\item \textbf{Assignment: Install OpenMDAO}
 		\end{itemize}
-	\item \underline{Video 3: Running with OpenMDAO}
+
+%%%----------Video 3----------%%%
+	\item \underline{Video 3: Running with OpenMDAO} \textit{(For this video, have some slides but also open a pre-coded example problem. No need to code up the importing portion, they likely will already be familiar with how that works, or it is straightforward enough. Do actually run the problem and talk over the output it generated. Also actually code up the accessing and printing values portion, explaining what each line does as you write it.)}
 		\begin{itemize}
-			\item Importing OpenMDAO classes
-			\item Importing components from pre-existing files
-			\item Running a sample model
-			\item Understanding the sample model output
-			\item Accessing and printing out values from the model
-			\item \textbf{Assignment: Run the paraboloid model and print out each out the variables}
+			\item Importing OpenMDAO classes. \textit{(Have a slide about how this is done, and then open up the example code and show where it is written/how it looks.)}
+			\item Importing components from pre-existing files \textit{(Have a slide about how this is done, and then open up the example code and show where it is written/how it looks.)}
+			\item Running a sample model. \textit{(Actually do this so they can see what it looks like.)}
+			\item Understanding the sample model output. Walk through the output generated by the code that was run.
+			\item Accessing and printing out values from the model. Show how this is done by isolating each variable in the model one by one and printing it out. Talk through it as the code is written.
+			\item \textbf{Assignment: Run the paraboloid model and print out each out the variables.} \textcolor{red}{Need to provide code for paraboloid model.}
 		\end{itemize}
-	\item \underline{Video 4: Explicit Components in OpenMDAO} \textit{(For this video, have some slides at the beginning illustrating what the 				component does and what the different methods do. Then type code out on the screen while illustrating exactly what each line does. The 					paraboloid example should work well for this video.)}
+
+%%%----------Video 4----------%%%
+	\item \underline{Video 4: Explicit Components in OpenMDAO} \textit{(For this video, have some slides at the beginning illustrating what the 				component does and what the different methods do. Then start with a blank page and type code out on the screen while illustrating exactly what each line does. The 	paraboloid example should work well for this video.)}
 		\begin{itemize}
 			\item Explicit components are components where the outputs are defined as explicit functions of the inputs.
-			\item Two necessary methods: setup and compute (Show on slide what each method does and explain it a little.)
-			\item Setup is where the inputs and outputs are declared, along with their derivatives
+			\item Two necessary methods: setup and compute. \textit{(Show on slide what each method does and explain it a little.)}
+			\item Setup is where the inputs and outputs are declared, along with their derivatives.
 				\begin{itemize}
-					\item Show how to select and add inputs and outputs
-					\item Show how to add defaults, descriptions, and units to the inputs and outputs
-					\item Show how to select and declare derivatives, including derivative type. For now we will finite difference all our derivatives.
+					\item Explain how to choose which variables are inputs and outputs.
+					\item Show how add inputs and outputs.
+					\item Show how to add defaults, descriptions, and units to the inputs and outputs.
+					\item Explain how to determine what outputs need derivatives with respect to what inputs.
+					\item Show how to declare derivatives, including derivative type. For now we will finite difference all our derivatives.
 				\end{itemize}
-			\item Compute is where the actual explicit equation is defined
+			\item Compute is where the actual explicit equation is defined.
 				\begin{itemize}
-					\item Show how to make the method
-					\item Show what parameters to pass
+					\item Show how to make the method.
+					\item Show what parameters to pass.
+					\item Type up the equation.
 				\end{itemize}
-			\item \textit{(Run the model so they can see the output. In order to do this there will need to be a problem defined, so just copy paste the 				problem code on the screen and quickly explain that it will be demonstrated later how that code was generated.)}
-			\item \textbf{Assignment: Build a simple explicit component using the equation: $$y(x)=x^4+2x^2+5$$ It is only necessary to use the 						setup and compute methods, just finite difference the derivatives. (Or use some other simple explicit component that has already been 						written.)}
+			\item \textit{(Run the model so they can see the output. In order to do this there will need to be a problem defined, so just copy paste the 				problem code onto the screen and quickly explain that it will be demonstrated later how that code was generated.)}
+			\item \textbf{Assignment: Build a simple explicit component using the equation: $$y(x)=x^4+2x^2+5$$ It is only necessary to use the 						setup and compute methods, just finite difference the derivatives. (Or use some other simple explicit component that has already been 						written.)} \textcolor{red}{Need to provide partial code file with the problem instantiation already written up, so all they have to do is build the component and they can run it.}
 		\end{itemize}
+
+%%%----------Video 5----------%%%
 	\item \underline{Video 5: Implicit Components in OpenMDAO} \textit{(For this video, have some slides at the beginning illustrating what the 				component does and what the different methods do. Then type code out on the screen while illustrating exactly what each line does. The 					quadratic example from the docs should work well for this video.)}
 		\begin{itemize}
 			\item Implicit components are components where the outputs are not explicit functions of the inputs.
-			\item These components need to be used if the desired outputs cannot be written as explicit functions of the inputs, but they can also be 					used at other times too. These times will be addressed later in the course.
-			\item Two necessary methods: setup and apply\_nonlinear \textit{(Show on slide what each method does and explain it a little.)}
+			\item These components need to be used if the desired outputs cannot be written as explicit functions of the inputs, but they can also be 					used at other times too. Sometimes it is beneficial to use an implicit component even if it isn't strictly necessary. These times will be addressed later in the course.
+			\item Two necessary methods: setup and apply\_nonlinear. \textit{(Show on slide what each method does and explain it a little.)}
 			\item Setup is where the inputs and outputs are declared, along with their derivatives.
 				\begin{itemize}
 					\item Explain how to determine which variables are inputs and which are outputs.
 					\item Show how to add inputs and outputs.
 					\item Show how to add defaults, descriptions, and units.
+					\item Explain how to determine what outputs need derivatives with respect to what inputs.
+					\item Show how to declare derivatives, including derivative type. For now we will finite difference all our derivatives.
 				\end{itemize}
 			\item Apply\_nonlinear is where the implicit equation(s) is(are) defined. 
 			\item Instead of writing explicit equations as was done in the explicit component, here each equation is defined by a residual. There is a 					residual for each output, but even though the name of the residual follows the name of the output it corresponds to, the actual value is will be zero, and the output need not appear in its own residual.
-			\item \textit{(Run the model so they can see the output. In order to do this there will need to be a problem defined, so just copy paste the 				problem code on the screen and quickly explain that it will be demonstrated later how that code was generated.)}
-			\item \textbf{Assignment: Build a simple implicit component using the equation: $$ \cos{x*y}-z*y=0 $$ It is only necessary to use the setup 			and apply\_nonlinear methods, just finite difference the derivatives. (Or use some other simple explicit component that has already been 					written.)}
+			\item \textit{(Run the model so they can see the output. In order to do this there will need to be a problem defined, so just copy paste the 				problem code onto the screen and quickly explain that it will be demonstrated later how that code was generated.)}
+			\item \textbf{Assignment: Build a simple implicit component using the equation: $$ \cos{x*y}-z*y=0 $$ It is only necessary to use the setup 			and apply\_nonlinear methods, just finite difference the derivatives.} \textcolor{red}{Need to provide partial code file with the problem instantiation already written up, so all they have to do is build the component and they can run it.}
 		\end{itemize}
-		
-	\item \underline{Video 6: Groups in OpenMDAO} \textit{(For this video, have some slides at the beginning illustrating what the component does 			and what the different methods do. Then type code out on the screen while illustrating exactly what each line does. The Sellar example from the 			docs should work well for this video. Don’t go though and define the components for the problem, just present a slide with the equations and 				explain that the components have already been written according to the methods previously discussed, then focus on using the group to tie them 		together.)}
+
+%%%----------Video 6----------%%%
+	\item \underline{Video 6: Groups in OpenMDAO} \textit{(For this video, have some slides at the beginning illustrating what the group does 			and what the different methods do. Then type code out on the screen while illustrating exactly what each line does. The Sellar example from the 			docs should work well for this video. Don’t go through and define the components for the problem, just present a slide with the equations and 				explain that the components have already been written according to the methods previously discussed, then focus on using the group to tie them 		together.)}
 		\begin{itemize}
 			\item The basic group operations happen in the setup method.
-			\item Show how groups fit into the OpenMDAO structure.
+			\item Show how groups fit into the OpenMDAO structure. \textit{(Use a slide to illustrate this.)}
 			\item Show how to add an IndepVarComp and explain what it does.
 			\item Show how to add components.
 			\item Show how to add subgroups.
-			\item OpenMDAO intrinsically converts units, as long as units, as long as units are specified for each input and output.
+			\item Explain that OpenMDAO intrinsically converts units, as long as units, as long as units are specified for each input and output.
 			\item Show how to connect inputs and outputs via connection.
-			\item Show how to add a solver to a subgroup.
+			\item Show how to add a solver to a subgroup, and explain why one is needed here (in the case of the Sellar problem).
 			\item Show how to add an objective and constraint.
-			\item \textit{(Run the model so they can see the output. In order to do this there will need to be a problem defined, so just copy paste the 				problem code on the screen and quickly explain that it will be demonstrated later how that code was generated.)}
+			\item \textit{(Run the model so they can see the output. In order to do this there will need to be a problem defined, so just copy paste the 				problem code onto the screen and quickly explain that it will be demonstrated later how that code was generated.)}
 			\item Another way to write groups is to connect variables via promotion instead of connection. Explain the difference between promotion 					and connection, and show how to rewrite the problem using promotion.
 			\item \textit{(Run the model again so they can see that the output hasn’t changed.)}
-			\item \textbf{Assignment: \textcolor{red}{Find a group example to use.} Read the provided group code and the accompanying equation which are in the 					components. Then modify it so that it uses promotion instead of connection.}
+			\item \textbf{Assignment: \textcolor{red}{Find a group example to use.} Read the provided group code and the accompanying equations which are in the components. Then modify it so that it uses promotion instead of connection.} \textcolor{red}{Need to provide fully functioning code with the components and group as well as the problem instantiation already written up. Make sure the group uses connection. Also provide a slide with the equations that the components utilize, as well as a model hierarchy diagram that illustrates how the provided code fits together.}
 		\end{itemize}
-	\item \underline{Video 7: Problems in OpenMDAO and review of model hierarchy} \textit{(For this video start by saying that today we are going to 	learn to bring everything together. Then pick one of the models (either a component or group exercise) that we have developed thus far and use it to write a problem for. After that code has been run, use slides to show how each of the models we have developed thus far fits together with its 			problem, group (if necessary) and solver/driver.)}
+		
+%%%----------Video 7----------%%%
+	\item \underline{Video 7: Problems in OpenMDAO and a Review of Model Hierarchy} \textit{(For this video start by saying that today we are going to 	learn to bring everything together. Then pick one of the models (either a component or group exercise) that we have developed thus far and use it to write a problem for. After that code has been run, use slides to show how each of the models we have developed thus far fits together with its 			problem, group (if necessary) and solver/driver.)}
 		\begin{itemize}
-			\item The problem is the container for the entire OpenMDAO model
-			\item Show how to instantiate a problem
-			\item Show how to add components and groups
-			\item Show how to set up a driver
-			\item Show how to add design variables
-			\item Show how to add constraints
-			\item Show how to add objectives
+			\item The problem is the container for the entire OpenMDAO model.
+			\item Show how to instantiate a problem.
+			\item Show how to add components and groups.
+			\item Show how to set up a solver.
+			\item Show how to set up a driver.
+			\item Show how to add design variables.
+			\item Show how to add constraints.
+			\item Show how to add objectives.
 			\item \textit{(Run the problem so they can see the output.)}
-			\item Show the slide with the general OpeMDAO hierarchy again and remind them of how the overall structure works. Then put up a slide 					for each of the previous lecture examples showing the hierarchy of how that example would look in a problem. Include any drivers. Talk 					through each slide and explain why it is broken up the way it is. (The two component slides will look basically the same.)
-			\item \textbf{Assignment: Choose one of the previous assignments and write a problem for it, then run it. For extra practice do this for 						more than one!}
+			\item Show the slide with the general OpeMDAO hierarchy again and remind them of how the overall structure works. Then put up a slide 					for each of the previous lecture examples showing the hierarchy of how that example would look in a problem. Include any solvers/drivers. Talk 					through each slide and explain why it is broken up the way it is.
+			\item \textbf{Assignment: Download the provided component and write a problem for it, then run it. For extra practice, try writing your own problems for the two components and one group that you made in previous assignments!} \textcolor{red}{Come up with a component for this assignment that isn't used in other assignments, and make it downloadable.}
 		\end{itemize}
-	\item \underline{Video 8: Putting it all together} \textit{(This video doesn’t teach any new content, it is an extended example on how to use what has been taught so far to put together a simple model.)}
+
+%%%----------Video 8----------%%%
+	\item \underline{Video 8: Putting it all together} \textit{(This video doesn’t teach any new content, it is an extended example on how to use what has been taught so far to put together a simple model. For this example it would be straightforward to use the Sellar problem, and since the components for this problem haven't been built it should be fine. Just make sure to write one explicit component and one implicit component, even though it isn't necessary. However, since vectorization hasn't been taught yet, make sure to make z1 ans z2 separate inputs.)}
 		\begin{itemize}
-			\item Find/make a simple model that uses one implicit and one explicit component, and uses both connection and promotion. The Sellar problem would be good in this case, and since the components haven’t been built before in the lecture it should be fine. Just make sure to write one implicit component, even though it is not necessary. However, since vectorization hasn’t been taught yet, make sure to make z1 and z2 separate inputs.
 			\item Show (on a slide) the equations chosen, and how they will be used (ie. what are the inputs and outputs of each component?)
-			\item Show (on a slide) a picture of the model structure for the model to be built.
+			\item Show (on a slide) a picture of the model structure for the model to be built, including any solvers/drivers.
 			\item Type out the code for each of the two components, making sure to only use the setup and compute/apply\_nonlinear methods, and use fd derivatives. Verbally explain what the code does as it is typed.
 			\item Type out the code for a group to put the two components in, and put a solver in it. Try to use both connection and promotion. Verbally explain what the code does as it is typed.
 			\item Type out the code for the problem, and verbally explain what the code does as it is typed.
 			\item \textit{(Run the model so they can see the output. Make a bit of a fuss over the fact that they now know how to build their own simple model. Get them excited about realizing how much they have learned.)}
-			\item \textbf{Assignment: None.}
+			\item \textbf{Assignment: None.} \textcolor{red}{Should there be an assignment here?}
 		\end{itemize}
-	\item \underline{Video 9: ExecComp, BalanceComp} \textit{(For this problem, type the code out on the screen while illustrating what each line does. For the ExecComp the paraboloid example should work well, and for the BalanceComp the quadratic example should work well.) \textcolor{red}{More detail here? There’s a lot more to these components than just one example can cover…}}
+
+%%%----------Video 9----------%%%
+	\item \underline{Video 9: ExecComp, BalanceComp} \textit{(For this video, slides are used to introduce the concept of each component and provide a little information. Then, type the code out on the screen while illustrating what each line does in order to provide an example implementation for each component. For the ExecComp the paraboloid example should work well, and for the BalanceComp the quadratic example should work well.) \textcolor{red}{More detail here? There’s a lot more to these components than just one example can cover…Although it has been addressed a bit in the advanced topics video at the end.}}
 		\begin{itemize}
 			\item ExecComp is a shortcut to an explicit component. 
 			\item It doesn’t require all the setup of a regular explicit component, it just needs an equation.
 			\item It assumes outputs on the left and inputs on the right. 
-			\item It automatically uses fd for the derivatives. (is this true?)
+			\item It automatically uses fd for the derivatives. \textcolor{red}{(is this true?)}
+			\item Show a slide with the paraboloid equation to remind them of it.
 			\item Show the code where the paraboloid component is called (from the explicit component video) and show how to modify it to use an ExecComp.
 			\item \textit{(Run the model so they can see the output.)}
 			\item Similarly, BalanceComp is a shortcut to an implicit component.
 			\item It doesn’t require all the setup of a regular implicit component.
+			\item \textcolor{red}{How does BalanceComp do derivatives?}
+			\item Show a slide with the quadratic equation to remind them of it.
 			\item Show the code where the quadratic component is called (from the implicit component video) and show how to modify it to use a BalanceComp.
 			\item \textit{(Run the model so they can see the output.)}
-			\item \textbf{Assignment: Rewrite the explicit component from video 4 using an ExecComp. Rewrite the implicit component from video 5 using a BalanceComp.}
+			\item \textbf{Assignment: Rewrite the explicit component from Video 4 using an ExecComp. Rewrite the implicit component from Video 5 using a BalanceComp. Run each one and compare your answers to what you got in Videos 4 and 5.} \textcolor{red}{Provide downloadable code files of the solutions to the assignments in Videos 4 and 5 in case they either didn't do them or didn't do them correctly.}
 		\end{itemize}
-	\item \underline{Video 10: Adding Vectors in OpenMDAO} \textit{(For this problem start out with a few slides talking aout the first couple bullet points. For the coding examples, use the Sellar problem from before and show how to modify it to vectorize everything.)}
+
+%%%----------Video 10----------%%%
+	\item \underline{Video 10: Adding Vectors in OpenMDAO and Using the N2} \textit{(For this problem start out with a few slides talking about the first couple bullet points. For the coding examples, use the Sellar problem from Video 8 and show how to modify it to vectorize everything. As always, make sure to explain what you type and what it does as you type it.)}
 		\begin{itemize}
-			\item 	Sometimes it is necessary to have inputs and/or outputs that are in vector form
-			\item Explain what the rows and columns of a Jacobian represent
-			\item Explain that it is easier for OpenMDAO if we specify which values in the Jacobian are nonzero
-			\item Explain how to determine which values in the Jacobian are nonzero
-			\item Show a reminder slide with the equations and modular structure of the Sellar problem
-			\item Show how to modify the Sellar code in the setup method to vectorize the z-variable. Use the code generated in the bringing-it-together example, because this has one explicit and one implicit component, so they can see how it works in both.
+			\item 	Sometimes it is necessary to have inputs and/or outputs that are in vector form. OpenMDAO was made to handle this, however, we can specify derivatives in a little different way to help OpenMDAO out with vectors.
+			\item Explain what the rows and columns of a Jacobian represent. \textcolor{red}{I believe Jasa's slides have some visuals on this already.}
+			\item It is easier for OpenMDAO if we specify which values in the Jacobian are nonzero.
+			\item Explain how to determine which values in the Jacobian are nonzero.
+			\item Show a reminder slide with the equations and modular structure of the Sellar problem.
+			\item Show how to modify the Sellar code in the setup method to vectorize the z-variable. \textit{(Use the code generated in Video 8, because this has one explicit and one implicit component, so they can see how it works in both.)}
 			\item Show how to modify the Sellar code in the compute and apply\_nonlinear methods to vectorize the z-variable. 
 			\item \textit{(Run the model so they can see that the output hasn’t changed.)}
-			\item \textbf{Assignment: Vectorize the y-variable in the Sellar code and run the model to make sure that the output hasn’t changed.}
+			\item We are now at the point where we are able to build more detailed models, and it is important to be able to visualize them.
+			\item OpenMDAO has a tool called an N2 diagram to help with model visualization.
+			\item Show what an N2 diagram looks like and put it next to a model block diagram to show how they relate (the Sellar problem would make a good example).
+			\item Show what an  unconnected variable looks like and explain what it means.
+			\item Show how to generate the N2 for the Sellar problem.
+			\item \textbf{Assignment: Vectorize the y-variable in the Sellar code and run the model to make sure that the output hasn’t changed.} \textcolor{red}{Will need to provide downloadable file of Sellar code, likely put in separate place for the assignment than where all the downloadable lecture code is.}
 		\end{itemize}
-	\item \underline{Video 11: Derivatives in OpenMDAO} \textit{(For the coding in this video use the Sellar problem from before, both the vectorized and un-vectorized versions (to show the different ways of implementing partials in vectorized and un-vectorized situations.))}
+
+%%%----------Video 11----------%%%
+	\item \underline{Video 11: Derivatives in OpenMDAO} \textit{(For the coding in this video use the Sellar problem from Videos 8 and 10 (both the vectorized and un-vectorized versions, to show the different ways of implementing partials in vectorized and un-vectorized situations.))}
 		\begin{itemize}
-			\item Have slides and discuss the benefits and drawbacks of fd, cs, and analytic derivatives in OpenMDAO. \textit{(There should already be slides on this in “getting\_derivatives\_in\_OpenMDAO.tex” in the OpenMDAO training materials repo. Or if it is preferred, the slides are also in John Jasa’s “getting\_derivatives\_presentation.pptx”.)}
-			\item Derivatives are implemented similarly but slightly differently in Explicit and Implicit Components. 
+			\item Have slides and discuss the benefits and drawbacks of fd, cs, and analytic derivatives in OpenMDAO. \textcolor{red}{There should already be slides on this in “getting\_derivatives\_in\_OpenMDAO.tex” in the OpenMDAO training materials repo, and duplicates in John Jasa’s “getting\_derivatives\_presentation.pptx”.}
+			\item Derivatives are implemented similarly but slightly differently in explicit and implicit components. 
 			\item In order to implement them as cs instead of fd, the only thing that needs changing from before is that the method declared is cs instead of fd. Implementing analytic derivatives is a bit more involved.
 			\item How to declare derivatives was covered in previous videos, but now instead of being declared as fd they will be declared as analytic (the default if no method is specified).
 			\item Show a slide with the partial derivatives of the Sellar problem.
-			\item For Explicit Components, the compute\_partials method is used to define analytic derivatives. It can be used both for vectorized and non-vectorized equations.
-			\item Show how to implement the compute\_partials method for the non-vectorized Explicit Component.
-			\item Show how to implement the compute\_partials method for the vectorized Explicit Component.
-			\textit{(Run the model so they can see if the output has changed. Also change the method back to fd as well as to cs, and run the model in all cases so they can observe whether or not the output changes. Afterwards return the method to fd so that the impact of analytic derivatives on the Implicit Component alone can be explored next.)}
-			\item Derivatives in Implicit Components are slightly different, because instead of taking the derivative of outputs with respect to inputs, we take the derivative of residuals with respect to both outputs and inputs.
-			\item The mechanics of declaring and providing the analytic derivatives are the same in Explicit and Implicit Components, but in Implicit Components the derivatives are provided in the linearize method.
-			\item Show how to implement the linearize method for the non-vectorized Implicit Component.
-			\item Show how to implement the linearize method for the vectorized Implicit Component.
-			\item \textit{(Run the model so they can see if the output has changed. Also change the method back to fd as well as to cs, and run the model in all cases so they can observe whether or not the output changes. Then go back and turn on the analytic derivatives in the Explicit Component as well as here in the Implicit Component, run the model, and show them if the output changes.)}
-			\item \textbf{Assignment: Pick two of your favorite assignment models we have worked on so far and implement analytic derivatives in them. Do the results change? Why or why not?}
+			\item For explicit components, the compute\_partials method is used to define analytic derivatives. It can be used both for vectorized and non-vectorized equations.
+			\item Show how to implement the compute\_partials method for the non-vectorized explicit component. \textit{(Type and explain what you are doing as you go.)}
+			\item Show how to implement the compute\_partials method for the vectorized explicit component. \textit{(Type and explain what you are doing as you go. Run the model so they can see if the output has changed. Also change the method back to fd as well as to cs, and run the model in all cases so they can observe whether or not the output changes. Afterwards return the method to fd so that the impact of analytic derivatives on the implicit component alone can be explored next.)}
+			\item Derivatives in implicit components are slightly different, because instead of taking the derivative of outputs with respect to inputs, we take the derivative of residuals with respect to both outputs and inputs.
+			\item The mechanics of declaring and providing the analytic derivatives are the same in explicit and implicit components, but in implicit components the derivatives are provided in the linearize method.
+			\item Show how to implement the linearize method for the non-vectorized implicit component. \textit{(Type and explain what you are doing as you go.)}
+			\item Show how to implement the linearize method for the vectorized implicit component. \textit{(Type and explain what you are doing as you go.)}
+			\item \textit{(Run the model so they can see if the output has changed. Also change the method back to fd as well as to cs, and run the model in all cases so they can observe whether or not the output changes. Then go back and turn on the analytic derivatives in the Explicit Component as well as here in the implicit component, run the model, and show them if the output changes from what it originally was.)}
+			\item \textbf{Assignment: Implement analytic derivatives in the models you made in Videos 4 and 5, and run them. Do the results change? Why or why not?} \textcolor{red}{Need to provide downloadable code for the assignments from Videos 4 and 5 in case they either didn't do them or didn't do them correctly.}
 		\end{itemize}
-	\item \underline{Video 12: The initialize method}
+
+%%%----------Video 12----------%%%
+	\item \underline{Video 12: The initialize method} \textit{(For this video, start with a few slides to help illustrate the pupose of the initalize method. Then code along to show them how to use it. Use the Sellar code from Video 11 (the one with analytic derivatives) to demonstrate with.)}
 		\begin{itemize}
 			\item Often times there is a need to pass certain parameters other than variables (such as constants or vector sizes) to a component or group.
 			\item This can be done using the initialize method, which is written the same in both components and groups.
 			\item The initialize method is traditionally implemented at the top of a component or group.
-			\item To demonstrate the implementation of the initialize method, we will use our previously developed Sellar code, and modify it so that we can multiply the equation in the Explicit Component by a constant which is set at the problem level. 
-			\item \textit{(First, go into the explicit component and walk through adding the initialize method, describing what each piece of code does. Include a default value of 1, and explain what the default is and does.} 
-			\item \textit{Next go into the group that contains the explicit and implicit Sellar components and show how to set up the initialize method in the group, and pass that information through the creation of the Explicit Component.}
-			\item \textit{Finally, go to the code where the problem is defined and show how to set the desired constant upon instantiation of the container group. Then run the code with a few different constants to show them whether or not it changes, and explain why.)}
-			\item \textbf{Assignment: Use the group and components from the Video 6 assignment and add the initialize method to the group and one or both of the components (your choice). Modify the code so that a constant can be passed via the initialize method to multiply one of the equations by. Then modify the problem statement so that you can control this constant at the problem level. Run the code with a few different constants. Does the output change? Why or why not?}
+			\item To demonstrate the implementation of the initialize method, we will use our previously developed Sellar code with analytic derivatives, and modify it so that we can multiply the equation in the explicit component by a constant which is set at the problem level. 
+			\item First, go into the explicit component and walk through adding the initialize method, describing what each piece of code does. Include a default value of 1, and explain what the default is and does.
+			\item Next, go into the group that contains the explicit and implicit Sellar components and show how to set up the initialize method in the group, and pass that information through the creation of the explicit component.
+			\item Finally, go to the code where the problem is defined and show how to set the desired constant upon instantiation of the group. Then run the code with a few different constants to show them whether or not it changes, and explain why.
+			\item Explain how using what you just wrote, you can modify the constant at the problem level and it passes all the way through the group level and down to the component.
+			\item \textbf{Assignment: Use the group and components from the Video 6 assignment and add the initialize method to the group and one or both of the components (your choice). Modify the code so that a constant can be passed via the initialize method to multiply one of the equations. Then modify the problem statement so that you can control this constant at the problem level. Run the code with a few different constants. Does the output change? Why or why not?} \textcolor{red}{Need to include a downloadable code solution to the Video 6 assignment in case they didn't do it or didn't do it correctly.}
 		\end{itemize}
-	\item \underline{Video 13: Putting it all together (again)} \textit{(This video doesn’t teach any new content, it is an extended example on how to use what has been taught so far to put together a more detailed model. Make sure to make use of the initialize method and analytic derivatives, as well as vectorization.)}
-		\begin{itemize}
-			\item \textcolor{red}{Find/make a model that uses one implicit and one explicit component, requires a constant to be passed via the initialize method, and has (or at least can have, and in this case does have) vectors. Use analytic derivatives.}
-			\item Show (on a slide) the equations chosen and their derivatives, as well as how they will be used. (ie. what are the inputs and outputs, what can be vectorized, and what needs to be passed via the initialize method.)
-			\item Show (on a slide) a picture of the model structure for the model to be built.
-			\item Type out the code for each of the two componeents, making sure to only used the setup, compute/apply\_nonlinear, initialize, and compute\_partials/linearize methods. Verbally explain what the code does as it is typed.
-			\item Type out the code for a group to put the two components in. Verbally explain what the code does as it is typed.
-			\item Type out the code for the problem, and verbally explain what the code does as it is typed.
-			\item \textit{(Run the model so they can see the output. Make a bit of a fuss over the fact that they can now build a more complex model where they can implement analytic derivatives and vectors, and can control the model more from the top level. Get them excited about realizing how much they have learned.)}
-			\item \textbf{Assignment: \textcolor{red}{Come up with a (simple) problem for them to implement. Make sure it has a simple vector.} Use the provided equations to implement your own model with analytic derivatives. Build the model and run it to see the output.}
-		\end{itemize}
-	\item \underline{Video 14: Revisiting the Structure of an OpenMDAO Model}
+		
+%%%----------Video 13----------%%%
+	\item \underline{Video 13: Revisiting the Structure of an OpenMDAO Model} \textit{(This vido is all about teaching them to take a real-world problem and make it into the form of an OpenMDAO model. No actual code will be written, everything will be done on slides.)}
 		\begin{itemize}
 			\item Show the slides from Video 2 on “How OpenMDAO thinks” and briefly remind them of the model structure.
 				\begin{itemize}
-					\item Now it is time to discuss how to take a real-world problem and organize it into an OpenMDAO model
-					\item Explain how to determine the objective
-					\item Explain how to determine which equations should be components equations
-					\item Explain how to determine which equations should be constraint equations
+					\item Now it is time to discuss how to take a real-world problem and organize it into an OpenMDAO model.
+					\item Explain how to determine the objective.
+					\item Explain how to determine which equations should be component equations.
+					\item Explain how to determine which equations should be constraint equations.
 				\end{itemize}
 			\item Once the governing equations, constraints, and objective have been selected, it is time to determine how to break them all up into components and groups.
-			\item Explain what a good rule of thumb is for the number of inputs and outputs a component should have, and how related the equations need to be.
+			\item Explain what a good rule of thumb is for the number of inputs and outputs a component should have, and how related the equations need to be in order to be placed in the same component.
 			\item Explain how to determine when/where to draw the boundaries for a group, and how this works into determining where to put the solvers.
-			\item Show a slide showing the general architecture of how to organize a complex model. Perhaps the organization of the aviary model would be a good example.
-			\item \textbf{Assignment: \textcolor{red}{Provide them with several sets of equations for some sort of model (perhaps lift, weight, atmospheric conditions, range, and drag equations).} Take the given equations and determine what the objective, constraints, and component equations are. Then decide how you would break these components equations up into Implicit Components, Explicit Components, and Groups. (Note, no need to actually code the model unless you want to, just determine how to break it up.)}
-
+			\item Show a slide with the general architecture of how to organize a complex model. \textcolor{red}{Perhaps the organization of the aviary model would be a good example.}
+			\item \textbf{Assignment: \textcolor{red}{Provide them with several sets of equations for some sort of model (perhaps lift, weight, atmospheric conditions, range, and drag equations).} Take the given equations and determine what the objective, constraints, and component equations are. Then decide how you would break these components equations up into implicit components, explicit components, and groups. (Note: no need to actually code the model unless you want to, just determine how to break it up.)} \textcolor{red}{Need to provide the equations in a downloadable file.}
+		\end{itemize}	
+		
+%%%----------Video 14----------%%%
+	\item \underline{Video 14: Building and Debugging a Model} \textit{(Have slides to support the points listed below. There is very little actual coding in this video. Other than the check\_partials cs vs. fd example near the end, it is all very visual and just uses slides.)}
+		\begin{itemize}
+			\item Building an OpenMDAO model, just like building any other sort of computer program, requires constant error checking along the way.
+			\item Once the model structure and equation locations have been determined, it is easiest to start small and build up to your full model.
+			\item A simple way to do this is to build one component at a time. After each component, put it in a problem and run it to make sure it works. Then once you know it works you can integrate it into its group, run that group and make sure it works too. So on and so forth.
+			\item In order to make finding errors easier, it often is helpful to fd your derivatives at first. Just make sure to come back and implement them analytically later if you want to use analytic derivatives.
+			\item Once you start implementing analytic derivatives, make sure to run check\_partials along the way. A significant number of model problems come from bad derivatives.
+			\item A common problem that arises when building models is singular matrices. If you get a singular matrix error it means that you have a row or column of zeros in your Jacobian.
+			\item A row of zeros means \textcolor{red}{I forgot which one is which, need to look up.}
+			\item A column of zeros mean \textcolor{red}{I forgot which one is which, need to look up.}
+			\item \textcolor{red}{Provide a simple example of a singular matrix error (either row or col of zeros)} and explain what’s wrong/how to fix it. Use slides, not code. Use visuals to show what the equations, inputs, and outputs are, and this should make it apparent where the problem is. However, make sure to point that out anyway.
+			\item Check\_partials also has several settings to help you see what is going on. One very useful setting is telling it to use cs derivatives instead of fd.
+			\item Show how to tell check\_partials to use cs derivatives. Code an example of derivatives exceeding their tolerance with fd derivatives but meeting it with cs. \textcolor{red}{Find the example.}
+			\item Show what some other useful settings are and how to implement them. \textcolor{red}{Find the settings.}
+			\item \textbf{Assignment: \textcolor{red}{Provide a simple example (give them the code and the equations) that has one singular matrix error (either row or col of zero, opposite what the lecture example was) and one or two bad derivatives.} The provided example code has errors in it. Figure out what the errors are and fix them. The correct answer is \textcolor{red}{provide correct answer here.}} \textcolor{red}{Need to include downloadable code with the error-filled example for them to fix.}
+		\end{itemize}
+		
+%%%----------Video 15----------%%%
+	\item \underline{Video 15: Putting it all together (again)} \textit{(This video doesn’t teach any new content, it is an extended example on how to use what has been taught so far to put together a more detailed model. Make sure to make use of the initialize method and analytic derivatives, as well as vectorization.)} \textcolor{red}{Note: this video is by nature very long, and perhaps should be broken up into two videos.}
+		\begin{itemize}
+			\item \textcolor{red}{Find/make a model that uses one implicit and one explicit component, requires a constant to be passed via the initialize method, and has (or at least can have, and in this case does have) vectors. Use analytic derivatives, and make sure to generate an N2.}
+			\item Show (on a slide) the equations chosen and their derivatives. Walk through breaking them up into a model. (ie. what are the constraints, how will the components be broken up, what are the inputs and outputs, what can be vectorized, and what needs to be passed via the initialize method.)
+			\item Show (on a slide) a picture of the model structure for the model to be built.
+			\item \textit{As the model is being built, demonstrate the ``start small'' approach that was previously taught (ie. first fd everything, build one component then test it, etc.).}
+			\item Type out the code for each of the two components, making sure to only used the setup, compute/apply\_nonlinear, initialize, and compute\_partials/linearize methods. Verbally explain what the code does as it is typed. After each component, put it in a problem and test it for bugs.
+			\item Type out the code for a group to put the two components in. Verbally explain what the code does as it is typed.
+			\item Type out the code for the problem, and verbally explain what the code does as it is typed.
+			\item Generate an N2 and show them how to check the connections. \textit{(Maybe even intentionally miss a connection so they can see the value of the N2.)}
+			\item Implement the analytic derivatives and run check\_partials. \textit{(Maybe even intentionally miss a partial or two so they can see how valuable check\_partials is.)}
+			\item \textit{(Run the model so they can see the output. Make a bit of a fuss over the fact that they can now build a more complex model using governing equations, and they can implement analytic derivatives and vectors, and can control the model more from the top level. Get them excited about realizing how much they have learned.)}
+			\item \textbf{Assignment: \textcolor{red}{Come up with a (simple) problem for them to implement. Make sure it has a simple vector.} Use the provided equations to implement your own model with analytic derivatives. Build the model and run it to see the output.} \textcolor{red}{Will need to include a downloadable file with the governing equations of the problem for them to implement.}
+		\end{itemize}
+		
+%%%----------Video 16----------%%%
+	\item \underline{Video 16: Visualization and Validation} \textit{(For this video the visualization section doesn’t need any accompanying code to be written, except to show how to generate the N2 for the Sellar problem. For the validation portion, use the Sellar problem’s code from Video 11.)} \textcolor{red}{There are already some pre-existing slides on visualization in the one-day OpenMDAO training course.}
+		\begin{itemize}
+			\item OpenMDAO provides several different ways to visualize the structure of your model.
+			\item The N2 diagram is very helpful in visualizing the model, and also can help with debugging.
+			\item Show how the N2 can be used to determine what solvers are where.
+			\item Show the N2 for the Sellar problem from Video 11, also show the structure of the Sellar problem from before to remind them what it looks like. (ie. block diagram)
+			\item Show what the other visualization tools are and explain how they work. \textcolor{red}{Need more detail here.}
+			\item Model validation is a useful tool to help make sure a model isn’t accidentally broken after it has been written.
+			\item This can be achieved by writing tests.
+			\item Tests can be written at different levels. There can be a test for each component as well as tests for groups. 
+			\item There are two portions to a test. There is a portion written in the same file as the component or group, and a portion written in a different file. \textcolor{red}{(Is this how the tests should be presented? This is how I learned to write them from Eliot, but Justin said he preferred a different method…?)}
+			\item Show how to write the in-component portion of a test for one of the components of the Sellar problem. \textit{(Type it out and explain as you go.)}
+			\item Show how to write the independent-file portion of a test for one of the components of the Sellar problem. \textit{(Type it out and explain as you go.)}
+			\item Copy paste both portions of a test in to other component of the Sellar problem (and its accompanying test file), and explain that it is written essentially the same as the first component.
+			\item Show how to write both the in-component portion and the independent-file portion of a test for the group containing the two components in the Sellar problem. \textit{(Type it out and explain as you go.)}
+			\item Show how to run testflo .
+			\item \textbf{Assignment: Write tests for each component and the group you developed in the assignment accompanying Video 6.} \textcolor{red}{Need downloadable code file of the solution to the Video 6 assignment in case they either didn't do it or didn't do it correctly.}
+		\end{itemize}
+	
+%%%----------Video 17----------%%%
+	\item \underline{Video 17: Solvers in OpenMDAO} \textit{(For this video, the portion on adding case recorders will need to be accompanied by coding. The Sellar model from Video 11 should work well for this.)}
+		\begin{itemize}
+			\item OpenMDAO has two general types of solvers, linear and nonlinear.
+			\item Explain the difference between linear and nonlinear solvers, and when you need each one. \textcolor{red}{Little unclear on this, look into it.}
+			\item Explain how BalanceComp uses solvers. \textcolor{red}{How DOES BalanceComp use solvers?}
+			\item Give a top-level view of how the different solvers work and when they are or are not useful.
+			\item Explain some common specific solver settings and options that might come in handy.
+			\item Sometimes it is helpful to see what is going on. This is where case recorders come in.
+			\item \textcolor{red}{Use some of the already developed slides from the one-day OpenMDAO course to help illustrate case recording.}
+			\item Show how to add a case recorder to the Sellar problem solver, and run it. \textit{(Type it out and explain as you go.)}
+			\item Explain how case recorders generate output, and how to understand what it is saying.
+			\item Show the Sellar problem case recorder output, and explain what each part means.
+			\item \textbf{Assignment: Attach a case recorder to the solver on the model generated in Video 6. Run the model with the case recorder and look at the output. What does the output mean?} \textcolor{red}{Need to include a downloadable code file of the solution to the Video 6 assignment in case they didn't do it or didn't do it correctly.}
+		\end{itemize}
+		
+%%%----------Video 18----------%%%
+	\item \underline{Video 18: Drivers in OpenMDAO} \textit{(For this video, the portion on adding case recorders will need to be accompanied by coding. The Sellar model from Video 11 should work well for this.)}
+		\begin{itemize}
+			\item OpenMDAO has both solvers and drivers, and they do different things.
+			\item Explain the difference between solvers and drivers, and give an example or two of how they would be implemented to complement each other.
+			\item Give a top-level view of how the different drivers work and when they are or are not useful.
+			\item Explain some common specific driver settings and options that might come in handy.
+			\item Case recorders can also be used on drivers. Their implementation is very similar to when they are attached to solvers.
+			\item \textcolor{red}{Use some of the already developed slides from the one-day OpenMDAO course to help illustrate case recording.}
+			\item Show how to add a case recorder to the Sellar problem driver, and run it. \textit{(Type it out and explain as you go.)}
+			\item Explain the differences between solver and driver case recorder output.
+			\item Show the Sellar problem case recorder output, and explain what each part means. Point out the differences and commonalities with solver case recorder output.
+			\item \textbf{Assignment: Attach a case recorder to the driver on the model generated in Video 6. Run the model with the case recorder and look at the output. What does the output mean?} \textcolor{red}{Need to include a downloadable code file of the solution to the Video 6 assignment in case they didn't do it or didn't do it correctly.}
+		\end{itemize}
+		
+%%%----------Video 19----------%%%
+	\item \underline{Video 19: Scaling in MDO and OpenMDAO} \textit{(The goal of this video is to teach about the importance of scaling in optimization in general, as well as its implementation in OpenMDAO. Most of the video is slides illustrating how scaling works and its importance. Only near the end when the implementation of scaling in OpenMDAO is demonstrated is there live coding.)}
+		\begin{itemize}
+			\item Show examples (equations with mismatched magnitudes, etc.) of poorly scaled optimization problems.
+			\item Explain what the problem of scaling is, and why it is significant. Explain what can happen to a poorly scaled problem.
+			\item Explain how scaling can help make problems better suited to optimization.
+			\item Show how scaling would be implemented on the poorly scaled example equations that were used at the beginning of the video.
+			\item Explain some good rules of thumb for determining appropriate scale factors.
+			\item Show how scaling can be implemented in OpenMDAO by using a poorly scaled toy problem. \textcolor{red}{(Find the problem to use for this.)} \textit{(Show the already written code for the problem and briefly walk them through each line to get them oriented to what they are looking at. Then run the problem and show the output it generates without scaling. Finally walk them through determining the scale factors and modifying the code to implement scaling, and run the problem again to show them how the output has changed.)}
+			\item \textbf{Assignment: The code and equations provided represent a poorly scaled problem. \textcolor{red}{(Find equations/problem that would work well for this.)} Run the problem and then implement what you think are good scale factors. Then run the problem again to see if the output has changed.} \textcolor{red}{Need to provide downloadable code with poorly scaled equations. Also provide downloadable file with the equations typed out to make it easier for them to visualize and determine scale factors.}
+		\end{itemize}
+		
+%%%----------Video 20----------%%%
+	\item \underline{Video 20: Deeper Dive into Implicit Components} \textit{(For this video, the only coding required is to demonstrate the solve\_nonlinear method. For this demonstration use the implicit component in the Sellar example from Video 11. The rest of the video uses only slides and explanations.)}
+		\begin{itemize}
+			\item There are some circumstances where it is helpful or a good idea to use implicit components even if they are not necessary.
+			\item Explain the circumstances where it is beneficial to write a component as implicit, even if it not strictly necessary. \textcolor{red}{What are these circumstances?}
+			\item Implicit components also have another method which can be helpful. This is the solve\_nonlinear method.
+			\item The solve\_nonlinear method gives a way to explicitly define an output as a function of inputs within an implicit component.
+			\item Sometimes it is not even possible to define solve\_nonlinear, depending on the problem. However, it can be useful.
+			\item Give some examples of common times when it is useful to define the solve\_nonlinear method.
+			\item Show how to implement the solve\_nonlinear method in the implicit component in the Sellar example we have been using. \textit{(Type this up and also explain as you go. Do this by modifying the already written implicit component in the Sellar example from Video 11.)}
+			\item Show how to isolate and call the solve\_nonlinear method. \textit{(Type this up and explain as you go.)}
+			\item \textbf{Assignment: Implement the solve\_nonlinear method in the implicit component from the assignment in Video 6. Isolate and call this method.} \textcolor{red}{Need to include a downloadable code file with the solution to the Video 6 assignment since they may not have done it or may not have done it correctly.}
 		\end{itemize}
 
-
+%%%----------Video 21----------%%%
+	\item \underline{Video 21: Advanced topics and further exploration into OpenMDAO} \textit{(Most of this video is slides, however, it does require some coding. For the demonstration of different settings in ExecComp and BalanceComp use the modified paraboloid and quadratic codes from video 9. )} \textcolor{red}{This can be expanded or contracted as much as we want. Perhaps add some more topics to tell them about? Also need to go into more detail on what is already here.}
+		\begin{itemize}
+			\item Using surrogate models in OpenMDAO. \textcolor{red}{(There are pre-existing slides on this which may or may not go into as much detail as is needed.)}
+			\item File wrappers. \textcolor{red}{(There are also pre-existing slides on this which may or may not go into as much detail as is needed.)}
+			\item Show different types of settings and equations for ExecComp and BalanceComp.
+			\item For more details on OpenMDAO, visit the docs, they are very extensive.
+			\item \textit{(Celebrate with them about how much they’ve learned, get them excited about what they now can do.)}
+			\item \textbf{Assignment: None. It's all done, yay!!!}
+		\end{itemize}
+		
+%%%----------Video 22----------%%%
+	\item \underline{Video 22: Putting it all Together One Final Time} \textit{()} \textcolor{red}{Is this really needed? It seems excessive, and would be tricky to do at this point without getting into a pretty detailed model... Maybe just give a few downloadable examples of actual complex models the branch has built, and include little blurbs about how they are organized?}
 
 \end{itemize}
 
 \end{document}
+		
