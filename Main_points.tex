@@ -1,0 +1,42 @@
+\documentclass[12pt, letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage[margin=1 in]{geometry}
+
+\begin{document}
+
+\centerline{\textbf{Main Points of OpenMDAO Videos}}
+
+\begin{itemize}
+	\item Video 1 – Introduction to Optimization: MDO is a useful engineering technique where optimal solutions are obtained using objectives, constraints, and design variables. There are several different types of MDO, and which type we are using affects how we interact with our model.
+	\item Video 2 – Details of Optimization: MDO has many different intrinsic details which can cause failed cases. It also is important to be able to properly understand concepts such as how to postprocess data and how to determine when to use equality constraints.
+	\item Video 3 – Introduction to OpenMDAO: OpenMDAO is a powerful MDO software that uses a modular and hierarchical structure. It has the capability to both solve systems of equations, and run optimizations on them.
+	\item Video 4 – Details of OpenMDAO: OpenMDAO is a powerful tool. It can be used in different ways depending on the need, and no matter what the need is, there are options available for implementing derivatives, utilizing unit conversions, and installing the software in different ways.
+	\item Video 5 – Running with OpenMDAO: OpenMDAO models are run by importing the necessary classes and using the command line to run the program. The program automatically generates some output, and print statements can be used to observe other final values.
+	\item Video 6 – Explicit Components in OpenMDAO: Explicit components in OpenMDAO are used for explicit equations, and can be written using the setup and compute methods. Within these methods, inputs, outputs, derivatives, and explicit equations can be declared.
+	\item Video 7 – Implicit Components in OpenMDAO: Implicit components in OpenMDAO are used for implicit equations, and can be written using the setup and apply\_nonlinear methods. Within these methods, inputs, outputs, derivatives, and residuals can be declared.
+	\item Video 8 – Groups in OpenMDAO: OpenMDAO models are constructed hierarchically using groups and components. The groups are where you will add solvers, create connections between components, and specify the design variables, constraints, and objective for the optimization.
+	\item Video 9 – Problems in OpenMDAO and a Review of Model Hierarchy: A problem is a special group at the top level of an OpenMDAO hierarchical model. In a problem you can add a model, solvers, drivers, design variables, constraints, and objectives.
+	\item Video 10 – Putting it all Together: OpenMDAO can be used to build a complete model from start to finish with fd derivatives. The model can employ implicit and explicit components, groups, and solvers, all contained within a problem.
+	\item Video 11 – Connection vs. Promotion: Variables can be connected by either connection or promotion. Which of these connection methods is better depends on the circumstances of the model.
+	\item Video 12 – ExecComp and BalanceComp: ExecComp and BalanceComp are shortcuts to implicit and explicit components. Simple implicit and explicit components can be written as ExecComp and BalanceComps.
+	\item Video 13 – Derivatives in OpenMDAO: OpenMDAO models are often much improved by implementing cs or analytic derivatives. Declaring and implementing both of these types of derivatives can be done in both explicit and implicit components.
+	\item Video 14 – Check\_partials: Check\_partials provides a way to check if the analytic derivatives you implemented are correct. There are several different options for check\_partials options, one of the most important of which is whether to cs or fd the checking derivatives.
+	\item Video 15 – Adding Vectors in OpenMDAO: OpenMDAO can handle inputs and outputs in vector form. In order to use vectors, it is necessary to think about the Jacobian and declare sparse derivatives, as well as to provide equations for vectorized inputs and outputs, and sparse Jacobians.
+	\item Video 16 – Visualizing an OpenMDAO Model: OpenMDAO has multiple ways of visualizing models. The N2 diagram shows the hierarchical breakdown of the model as well as the connections. The connection viewer is another way to see model connections.
+	\item Video 17 – The Initialize Method: Components and groups can use the initialize method to pass parameters not controlled by the solver or driver. These parameters can be set at the problem level and passed all the way down through the components.
+	\item Video 18 – Revisiting the Structure of an OpenMDAO Model: In order to make a real-world problem into an OpenMDAO problem, the equations need to be broken up into an objective, constraints, and component equations. These equations need to be further divided up into components and groups.
+	\item  Video 19 – Building and Debugging a Model: A methodical ‘spiral out’ approach to building an OpenMDAO can be achieved by building the components individually and testing them before integrating them. Common problems are bad derivatives and singular matrices, and these can be resolved with fd, check\_partials, and an understanding of the Jacobian.
+	\item Video 20 – Putting it all Together (again): OpenMDAO can be used to break up a real-world problem and build a more complicated model. The model has implicit and explicit components, passed parameters, promoted variables, analytic derivatives, vectors, and can be built and debugged using the ‘spiral out’ approach, check\_partials, and N2 diagrams.
+	\item Video 21 – Validation: Built models can be accidentally broken after they are fully functioning, so they need tests to check for this. Tests need two portions to be written, one in the component/group itself and one in a separate test file.
+	\item Video 22 – Solvers in OpenMDAO: OpenMDAO has several options for both linear and nonlinear solvers, and these work differently and should be implemented in different situations. There are a few different methodologies behind determining where to put solvers in a model. 
+	\item Video 23 – Drivers in OpenMDAO: OpenMDAO has several options for drivers, and these work differently and should be implemented in different situations.
+	\item Video 24 – Case Recording in OpenMDAO: OpenMDAO has case recorders which help the you see what is going on in the solver and/or driver. These case recorders attach to either a solver or driver, and their output provides information to what that solver or driver is doing.
+	\item Video 25 – Scaling in MDO and OpenMDAO: Scaling is important and necessary in optimization in order to help different magnitude equations contribute evenly to the optimization. Initial scale factors are determined using a few rules of thumb, and these can be implemented into OpenMDAO.
+	\item Video 26 – Deeper Dive into Implicit Components: In circumstances such as working with expensive codes, it is a good idea to implement implicit components even if they aren’t necessary. Implementing the solve\_nonlinear method in implicit components can also be helpful for portions of implicit components which can be written explicitly.
+	\item Video 27 – Advanced Topics and Further Exploration into OpenMDAO: OpenMDAO has several more advanced topics. Some of these advanced topics are surrogate modeling, additional settings for ExecComp and BalanceComp, and much much more!
+	\item Video 28 – Putting it all Together One Final Time:
+\end{itemize}
+
+\end{document}
